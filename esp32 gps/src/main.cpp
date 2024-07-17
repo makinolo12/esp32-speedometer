@@ -1,10 +1,15 @@
 #include <Arduino.h>
 #include <esp32_smartdisplay.h>
 #include <TinyGPS.h>
+#include <lvgl.h>
 #include <ui/ui.h>
 #include <SoftwareSerial.h>
 
+
+
 #define _GPS_KMPH_PER_KNOT 1.852
+// Variable para almacenar la velocidad más alta
+float highest_speed_kmph = 0.0;
 
 
 
@@ -103,10 +108,31 @@ unsigned long speed_knots = gps.speed(); // Obtiene la velocidad en nudos
 float speed_kmph = speed_knots * _GPS_KMPH_PER_KNOT / 100.0; // Convierte la velocidad a km/h
 
 // Formatea la velocidad en km/h en el buffer de texto
-sprintf(text_buffer, "%.2f km/h", speed_kmph);
+sprintf(text_buffer, "%.2f  KM/h", speed_kmph);
 
 // Establece el texto de la etiqueta con la velocidad formateada
 lv_label_set_text(ui_Label1, text_buffer);
+
+
+// Suponiendo que 'gps' es tu objeto TinyGPS y 'c' es el carácter recibido del GPS
+
+// Para obtener el número de satélites
+unsigned short satellites = gps.satellites();
+
+// Para mostrar el número de satélites en la etiqueta de LVGL
+sprintf(text_buffer, "%d SAT", satellites);
+lv_label_set_text(ui_Label2, text_buffer);
+
+
+
+
+if (speed_kmph > highest_speed_kmph) {
+        highest_speed_kmph = speed_kmph;
+    }
+
+    sprintf(text_buffer, "Máxima: %.2f KM/h", highest_speed_kmph);
+    // Establece el texto de la etiqueta con la velocidad más alta
+    lv_label_set_text(ui_Label3, text_buffer);
 
 
     lv_timer_handler();

@@ -14,8 +14,10 @@ void ui_Screen1_screen_init(void);
 lv_obj_t *ui_Screen1;
 lv_obj_t *ui_Label1;
 lv_obj_t *ui_Label2;
+lv_obj_t *ui_Label3;
 lv_obj_t *ui____initial_actions0;
 const lv_img_dsc_t *ui_imgset_e979a1565935453499d015faae62da[1] = {&ui_img_e9879a1565935453499d015faae62da8_png};
+const lv_img_dsc_t *ui_imgset_[1] = {&ui_img_1912175_png};
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////
 #if LV_COLOR_DEPTH != 16

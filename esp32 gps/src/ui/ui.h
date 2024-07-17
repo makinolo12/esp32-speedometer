@@ -22,10 +22,12 @@ void ui_Screen1_screen_init(void);
 extern lv_obj_t *ui_Screen1;
 extern lv_obj_t *ui_Label1;
 extern lv_obj_t *ui_Label2;
+extern lv_obj_t *ui_Label3;
 extern lv_obj_t *ui____initial_actions0;
 
 
 LV_IMG_DECLARE( ui_img_e9879a1565935453499d015faae62da8_png);   // assets/e9879a1565935453499d015faae62da8.png
+LV_IMG_DECLARE( ui_img_1912175_png);   // assets/1912175.png
 
 
 
